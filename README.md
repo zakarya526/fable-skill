@@ -1,8 +1,8 @@
 # fable-skill
 
-**By [Muhammad Zakarya](https://github.com/zakarya526)** · MIT · works in [70+ AI coding agents](https://github.com/vercel-labs/skills)
+Works in [70+ AI coding agents](https://github.com/vercel-labs/skills)
 
-> **The goal:** spend your best model's judgment *once*. Fable 5 reads a codebase deeply and writes plans precise enough that a capable executor (Opus 4.8) — or any agent, or a human — can build them safely. The skill never edits your code itself.
+**The goal:** spend your best model's judgment *once*. Fable 5 reads a codebase deeply and writes plans precise enough that a capable executor (Opus 4.8) — or any agent, or a human — can build them safely. The skill never edits your code itself.
 
 ```
 you          →  /fable-skill                (Fable 5 audits & advises)
