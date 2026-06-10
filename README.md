@@ -51,6 +51,6 @@ Fable 5 — the frontier planner — does the judgment that compounds (understan
 
 ## Credits & License
 
-A Fable 5 rebrand of [`improve`](https://github.com/shadcn/improve) by [shadcn](https://github.com/shadcn) — original concept and architecture are shadcn's, used under MIT.
+A Fable 5 rebrand/improved version of [`improve`](https://github.com/shadcn/improve) by [shadcn](https://github.com/shadcn) — original concept and architecture are shadcn's, used under MIT.
 
 MIT © Muhammad Zakarya. Original work © shadcn — see [LICENSE.md](./LICENSE.md).
