@@ -2,12 +2,12 @@
 
 An agent skill that points **Fable 5** at any codebase, audits it, and writes implementation plans for other agents to execute.
 
-The idea: use Fable 5 — the high-ceiling planner — for the part where intelligence compounds (understanding the codebase, judging what's worth doing, writing the spec) and hand execution to cheaper models. The skill never implements anything itself. The plan is the product.
+The idea: use Fable 5 — the high-ceiling planner — for the part where intelligence compounds (understanding the codebase, judging what's worth doing, writing the spec) and hand execution to a capable executor model that just follows the spec. The skill never implements anything itself. The plan is the product.
 
 ```
 you          →  /fable-skill             (Fable 5 advises)
 plans/       →  001-fix-n-plus-one.md       (self-contained specs)
-other agent  →  implements, tests, ships    (cheap model, executes)
+other agent  →  implements, tests, ships    (Opus 4.8 executes)
 ```
 
 ## Install
@@ -29,7 +29,7 @@ Works in any agent that supports [Agent Skills](https://agentskills.io) format. 
 /fable-skill next                   feature suggestions — where to take the project
 /fable-skill plan <description>     skip the audit, spec one thing
 /fable-skill review-plan <file>     critique and tighten an existing plan
-/fable-skill execute <plan>         dispatch a cheaper executor, review its work
+/fable-skill execute <plan>         dispatch a capable executor, review its work
 /fable-skill reconcile              refresh the backlog: verify, unblock, retire
 /fable-skill ... --issues           also publish plans as GitHub issues
 ```
@@ -41,19 +41,19 @@ A typical first run, start to finish:
 1. Open your agent in the repo and run `/fable-skill` (or `/fable-skill quick` to keep it cheap).
 2. It maps the repo, audits it, and comes back with a findings table. Reply with the ones you want planned — "plan 1, 3 and 5".
 3. Plans land in `plans/` — one file each, plus an index with the recommended order. Read them; they're meant to be reviewed.
-4. Hand a plan to any agent ("implement plans/001-*.md"), or let the skill run it: `/fable-skill execute 001`. It dispatches a cheaper model in an isolated worktree, reviews the diff against the plan, and reports back with a verdict. Merging stays up to you.
+4. Hand a plan to any agent ("implement plans/001-*.md"), or let the skill run it: `/fable-skill execute 001`. It dispatches a capable executor (Opus 4.8) in an isolated worktree, reviews the diff against the plan, and reports back with a verdict. Merging stays up to you.
 5. Next session, run `/fable-skill reconcile` to clean up the backlog: verify what landed, refresh what drifted, unblock what got stuck.
 
 Before a PR, `/fable-skill branch` does the same thing scoped to just what your branch changes.
 
 ## Why Fable 5
 
-The skill is built on a tiered-model bet: spend the expensive, high-ceiling model where judgment compounds, and delegate the mechanical work to cheaper ones.
+The skill is built on a tiered-model bet: spend the frontier model where judgment compounds, and delegate the well-specified implementation to a capable executor.
 
-- **Fable 5 plans.** Understanding a large codebase, vetting findings, and writing specs precise enough for a weaker model to follow without context is exactly the work that rewards a frontier model.
-- **Cheaper Claude models execute.** `execute` dispatches a Haiku- or Sonnet-class subagent in an isolated worktree; Fable 5 stays in the advisor/reviewer seat and never spends its budget typing out the diff.
+- **Fable 5 plans.** Understanding a large codebase, vetting findings, and writing specs precise enough for another model to follow without context is exactly the work that rewards a frontier model.
+- **A capable model executes.** `execute` dispatches an **Opus 4.8** subagent (Sonnet 4.6 for lighter, mechanical plans) in an isolated worktree; Fable 5 stays in the advisor/reviewer seat and never spends its frontier judgment typing out the diff.
 
-You get frontier-quality judgment on the part that matters and cheap throughput on the part that doesn't.
+You get frontier-quality judgment on the part that matters, and a capable, dedicated executor on the part that's already fully specified.
 
 ## Example
 
@@ -102,7 +102,7 @@ Each plan also stamps the git commit it was written against, so executors run a 
 
 Plans aren't fire-and-forget:
 
-- **`execute <plan>`** spawns a cheaper executor subagent in an isolated git worktree, hands it the plan, then reviews the result like a tech lead — re-runs every done criterion, checks scope compliance, reads the diff against intent. Verdict: approve (merging stays your call), send back for revision (max 2 rounds), or block and refine the plan.
+- **`execute <plan>`** spawns a capable executor subagent (Opus 4.8) in an isolated git worktree, hands it the plan, then reviews the result like a tech lead — re-runs every done criterion, checks scope compliance, reads the diff against intent. Verdict: approve (merging stays your call), send back for revision (max 2 rounds), or block and refine the plan.
 - **`reconcile`** processes what happened since: verifies DONE plans still hold, investigates BLOCKED ones and rewrites around the obstacle, refreshes drifted plans, retires findings that got fixed independently.
 - **`--issues`** publishes plans as GitHub issues — same self-contained body, so any agent or human can pick them up where work already lives.
 

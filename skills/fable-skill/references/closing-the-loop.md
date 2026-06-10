@@ -16,7 +16,7 @@ The founding rule survives unchanged: **the advisor never edits source code.** I
 
 ### Dispatch
 
-Spawn **one** `general-purpose` subagent with `isolation: "worktree"`. Executor model: default to a cheaper Claude — `sonnet` for most plans, `haiku` for mechanical/low-risk ones — keeping Fable 5 (the advisor) out of execution so the tiered economics hold. Use whatever model the user named if they named one (`execute 003 haiku`).
+Spawn **one** `general-purpose` subagent with `isolation: "worktree"`. Executor model: default to **Opus 4.8** (`opus`) — capable enough to implement a precise spec, run its verification gates, and recover from minor surprises — dropping to `sonnet` only for lighter, mechanical plans. Keep Fable 5 (the advisor) out of execution so it stays reserved for the judgment work. Use whatever model the user named if they named one (`execute 003 sonnet`).
 
 The subagent prompt must contain:
 
