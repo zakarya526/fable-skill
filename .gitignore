@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Plans are generated per-repo by the skill at runtime, not shipped here.
+plans/
+advisor-plans/
+
+# Node (in case anyone adds tooling later)
+node_modules/

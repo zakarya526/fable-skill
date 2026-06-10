@@ -1,0 +1,13 @@
+{
+  "name": "fable-skill",
+  "description": "Point Fable 5 at a codebase and it figures out what's worth doing — bugs, perf, tech debt, what to build next — then writes plans any agent can execute. It hands the work to a cheaper model and reviews the result. It never edits your code.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Muhammad Zakarya",
+    "url": "https://github.com/zakarya526"
+  },
+  "homepage": "https://github.com/zakarya526/fable-skill",
+  "repository": "https://github.com/zakarya526/fable-skill",
+  "license": "MIT",
+  "keywords": ["audit", "code-review", "planning", "agents", "tech-debt", "security", "fable-5", "claude-code"]
+}
