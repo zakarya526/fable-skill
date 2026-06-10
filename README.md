@@ -1,5 +1,9 @@
 # fable-skill
 
+**By [Muhammad Zakarya](https://github.com/zakarya526)** · MIT · works in [70+ AI coding agents](https://github.com/vercel-labs/skills)
+
+> **The goal:** spend your best model's judgment *once*. Fable 5 understands a codebase deeply and writes plans precise enough that a capable executor (Opus 4.8) — or any other agent, or a human — can build them safely. The skill itself never edits your code.
+
 An agent skill that points **Fable 5** at any codebase, audits it, and writes implementation plans for other agents to execute.
 
 The idea: use Fable 5 — the high-ceiling planner — for the part where intelligence compounds (understanding the codebase, judging what's worth doing, writing the spec) and hand execution to a capable executor model that just follows the spec. The skill never implements anything itself. The plan is the product.
@@ -16,7 +20,13 @@ other agent  →  implements, tests, ships    (Opus 4.8 executes)
 npx skills add zakarya526/fable-skill
 ```
 
-Works in any agent that supports [Agent Skills](https://agentskills.io) format. The plans it writes are plain markdown, so any agent (or human) can pick them up.
+The installer (from [`vercel-labs/skills`](https://github.com/vercel-labs/skills)) lets you choose which of 70+ agents to install into — move with ↑↓, **press space to select**, enter to confirm. To install straight into **Claude Code** and skip the picker:
+
+```bash
+npx skills add zakarya526/fable-skill -a claude-code
+```
+
+Works in any agent that supports the [Agent Skills](https://agentskills.io) format. The plans it writes are plain markdown, so any agent (or human) can pick them up.
 
 ## Usage
 
